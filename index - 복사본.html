@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Lotto 번호 생성기</title>
+    <meta charset="utf-8">      <!-- 한국어 안 깨지게 함 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- vuetify 스타일 참조 링크 -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900" rel="stylesheet">
+    <!-- vuetify 스타일 참조 링크 -->
+    <link href="https://cdn.jsdelivr.net/npm/@mdi/font@6.x/css/materialdesignicons.min.css" rel=  "stylesheet">
+    <!-- vuetify 스타일 참조 링크 -->
+    <link href="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.min.css" rel="stylesheet">
+    
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>  
+    
+    <script src="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.js"></script>  
+    
+    <script type="module" src="index.js"></script>        
+</head>
+
+<body>
+    
+    <div id="app">
+
+        <v-app> 
+
+            <v-main> 
+                <v-container fluid >
+                    <div>
+                        {{ subject }}
+                    </div>
+                    
+                    
+                    <div class="row">
+                        <label  class="col-auto" > 로또번호 : </label>
+                        <v-text-field  v-model="lotto_numbers" class ="col-9" background-color = "green">     </v-text-field>           
+                        <v-btn  @click="last_lotto_numbers" class="col-auto" > 실행  </v-btn>
+                    </div>
+                    
+                    <h1> {{lotto_numbers }}</h1>
+                    
+                    <div class="form-check form-switch">
+                        <v-checkbox v-model="auto"  @change="auto_check"  label= "자동"></v-checkbox>                        
+                    </div>
+                    
+                    <div>
+                        <v-radio-group v-model="auto_yn"   row>           
+                            <v-radio  value="N" @change="auto_checkc"  label="자동"> </v-radio>
+                            <v-radio  value="Y" @change="auto_checkc"  label="수동"> </v-radio>
+                        </v-radio-group>
+                    </div>
+
+                    <div>
+                        <!-- <select v-model="choice">
+                            <option :value="president.no" v-for="president in president_list">[{president.name}]</option>
+                            
+                        </select> -->
+                        <!-- <v-btn  @click="choice_pre"  > 선택  </v-btn> -->          
+                        <v-select      v-model="choice"                      
+                            :items="president_list"
+                            item-text="name"
+                            item-value="no"                            
+                        ></v-select>
+                        <v-text-field  v-model="choice" ></v-text-field> 
+
+                    </div>                    
+
+                    <span v-for= "president in president_list">
+                        <input type="radio"  v-model ="choice"  :value = "president.no"  /> {{president.name}}                   
+                    </span>
+                    
+                    <div>                        
+                        <v-radio-group v-model="choice"   row>           
+                            <v-radio v-for= "president in president_list" :value="president.no" :label="president.name"> </v-radio>                            
+                        </v-radio-group>
+                    </div>  
+
+
+                </v-container>  
+            </v-main> 
+
+           
+
+        </v-app> 
+    </div>
+
+
+
+</body>
+
+</html>
