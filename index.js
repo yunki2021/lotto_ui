@@ -77,7 +77,7 @@ var app = new Vue({
 
         lotto_numbers_create() {
 
-            var url = "http://apps.forcei.co.kr:19003/api/get_last_lotto_numbers";
+            var url = "http://apps.forcei.co.kr:19002/api/get_last_lotto_numbers";
             this.get_data(url,"", (data) => {
                 
                 this.lotto_number_list  = data;
